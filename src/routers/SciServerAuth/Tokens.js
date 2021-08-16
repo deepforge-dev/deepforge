@@ -43,6 +43,6 @@ class NotFoundError extends Error {
     }
 }
 
-TokenStorage.NotFoundError = NotFoundError;
+TokenStorage.prototype.NotFoundError = NotFoundError;
 
 module.exports = new TokenStorage();
