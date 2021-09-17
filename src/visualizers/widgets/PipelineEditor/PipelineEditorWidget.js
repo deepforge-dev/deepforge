@@ -267,7 +267,8 @@ define([
         this.$execHeader = $('<div>', {class: 'execution-header panel-header'});
         this.$execCntr.append(this.$execHeader);
 
-        this.$execBody = $('<table>', {class: 'table'});
+        this.$execBody = $('<div>', {class: 'execution-body'});
+        this.$execList = $('<table>', {class: 'table'});
         var thead = $('<thead>'),
             tr = $('<tr>'),
             td = $('<td>');
@@ -280,12 +281,13 @@ define([
         tr.append(td);
         tr.append($('<td>'));
         thead.append(tr);
-        this.$execBody.append(thead);
+        this.$execList.append(thead);
 
         // Create the table header
         this.$execContent = $('<tbody>');
-        this.$execBody.append(this.$execContent);
+        this.$execList.append(this.$execContent);
 
+        this.$execBody.append(this.$execList);
         this.$execCntr.append(this.$execBody);
 
         this.$execHeader.on('click', this.toggleExecutionTab.bind(this));

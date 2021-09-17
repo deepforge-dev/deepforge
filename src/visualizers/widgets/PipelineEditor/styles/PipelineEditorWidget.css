@@ -1,27 +1,21 @@
 /**
- * This file is for any css that you may want for this visualizer.
- *
- * Ideally, you would use the scss file also provided in this directory 
- * and then generate this file automatically from that. However, you can 
- * simply write css if you prefer
+ * This file is for any scss that you may want for this visualizer.
  */
-
 .pipeline-editor {
   outline: none; }
-
-.pipeline-editor .execution-container {
-  bottom: 0;
-  left: 0.75em;
-  position: absolute;
-  min-width: 25em;
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.pipeline-editor .execution-header {
-  font-size: 1.2em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-}
+  .pipeline-editor .execution-container {
+    bottom: 0;
+    left: 0.75em;
+    position: absolute;
+    min-width: 25em;
+    margin-bottom: 0;
+    text-align: center; }
+  .pipeline-editor .execution-header {
+    font-size: 1.2em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 0.75em;
+    padding-right: 0.75em; }
+  .pipeline-editor .execution-body {
+    overflow: auto;
+    max-height: 500px; }
