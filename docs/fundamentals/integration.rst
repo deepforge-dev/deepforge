@@ -10,8 +10,8 @@ This also enables users to "bring their own storage" as they can connect their e
 Currently, DeepForge supports 3 different storage adapters:
 
 1. S3 Storage: Object storage with an S3-compatible API such as `minio <https://play.min.io>`_ or `AWS S3 <https://aws.amazon.com/s3/>`_
-2. SciServer Files Service : Files service from `SciServer <https://sciserver.org>`_
-3. WebGME Blob Server : Blob storage provided by `WebGME <https://webgme.org/>`_
+2. SciServer Files: Files service from `SciServer <https://sciserver.org>`_
+3. WebGME Blob Storage: Blob storage provided by `WebGME <https://webgme.org/>`_
 
 Compute Adapters
 ----------------
@@ -20,6 +20,6 @@ Similar to storage adapters, compute adapters enable DeepForge to integrate with
 Currently, the following compute adapters are available:
 
 1. WebGME Worker: A worker machine which polls for jobs via the `WebGME Executor Framework <https://github.com/webgme/webgme/wiki/GME-Executor-Framework>`_. Registered users can connect their own compute machines enabling them to use their personal desktops with DeepForge.
-2. SciServer-Compute: Compute service offered by `SciServer <https://sciserver.org>`_
+2. SciServer Compute: Compute service offered by `SciServer <https://sciserver.org>`_
 3. Server Compute: Execute the job on the server machine. This is similar to the execution model used by Jupyter notebook servers.
 
