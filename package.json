@@ -30,7 +30,7 @@
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/runtime": "^7.7.2",
-    "aws-sdk": "^2.680.0",
+    "aws-sdk": "^2.814.0",
     "chance": "^1.1.4",
     "commander": "^2.20.3",
     "deepforge-user-management-page": "github:deepforge-dev/user-management-page",
