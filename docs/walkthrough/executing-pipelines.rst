@@ -23,25 +23,32 @@ The pipeline can also be chosen to run in debug mode here. This will allow editi
 
 Credentials for Pipeline Inputs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This section requires inputting the credentials for accessing all artifacts used in the pipeline. Because each artifact can be located in different storage backends or different accounts within that backend, each artifact must be provided with its own credentials. If no input artifacts are used in the pipeline, this section will not be present.
+Pipeline inputs may be stored in different storage backends, such as S3 or SciServer Files, which may in turn require authorization for access. If authorization is required, this section of the dialog will be populated with input fields for the expected credentials. If no input artifacts are used in the pipeline, this section will not be present.
 
-.. figure:: images/redshift-execute-creds.png
+In the figure below, the pipeline inputs are stored using SciServer Files so a dropdown containing the linked SciServer accounts is shown.
+
+
+.. figure:: images/simple-execute-creds.png
     :align: center
     :scale: 50%
 
 Compute Options
 ^^^^^^^^^^^^^^^
-In this section, you will select from the available compute backends. In the examples shown, for instance, the SciServer Compute service will be used. Each compute backend may require additional information, such as login credentials or computation resources that should be used.
+In this section, you will select from the available compute backends.  Each compute backend may require additional information, such as login credentials or computation resources that should be used.
 
-.. figure:: images/cifar-execute-compute.png
+In the figure below, SciServer Compute is selected. SciServer Compute requires the user to select a linked account and a compute domain; this example is using the account, brollb, on the "Small Jobs Domain".
+
+.. figure:: images/simple-execute-compute.png
     :align: center
     :scale: 50%
 
 Storage Options
 ^^^^^^^^^^^^^^^
-Here, the storage backend must be chosen from the available options. As with the compute options, SciServer's Files Service is used here as an example. Each backend may require additional input, such as login credentials and the desired storage location. This storage backend and location will be where all files created during execution will be stored. This will include both files used during execution, such as data passed between operations, as well as artifacts created using Output operations.
+Here, the storage backend must be chosen from the available options. Each backend may require additional input, such as login credentials and the desired storage location. This storage backend and location will be where all files created during execution will be stored. This will include both files used during execution, such as data passed between operations, as well as artifacts created from Output operations.
 
-.. figure:: images/cifar-execute-storage.png
+The figure below shows an example using SciServer Files. Like SciServer Compute, the user must first select the linked account to use. Then the user must provide the volume and volume pool to be used. In this example, the "brollb" account is used with the "brollb/deepforge_data" volume on the "Storage" volume pool. More information can be found in the `SciServer User Guide <https://www.sciserver.org/wp-content/uploads/2021/09/sciserver-how-to-2021-09-22.pdf>`_.
+
+.. figure:: images/simple-execute-storage.png
     :align: center
     :scale: 50%
 
