@@ -45,15 +45,17 @@ Here, the storage backend must be chosen from the available options. As with the
     :align: center
     :scale: 50%
 
-Manual Execution
-~~~~~~~~~~~~~~~~
-If desired, pipelines can be executed manually by advanced users. Hovering over the red + icon in the pipeline's workspace and clicking the yellow export button that appears will open a dialog box for exporting the pipeline.
+Export Pipeline
+~~~~~~~~~~~~~~~
+If desired, pipelines can be exported as a command line utility for execution locally. Hovering over the red + icon in the pipeline's workspace and clicking the yellow export button that appears will open a dialog box for exporting the pipeline.
 
 .. figure:: images/export-pipeline.png
     :align: center
     :scale: 50%
 
-Any artifacts used in Input operations will require the login credentials for the backend and account where the artifact is stored. Clicking the blue *Run* button in the bottom right will generate the execution files for the pipeline and automatically download them in a zip file. In this zip folder are all the files normally generated for execution. The simplest way to execute this pipeline is to run the top-level *main.py* file. 
+The dialog will prompt the user to select which of the pipeline inputs should be treated as *static artifacts*. A static artifact is an input of the pipeline that should be fixed to the current value. For example, if you have an evaluation pipeline which accepts two inputs, testing data and a model, you may want to set the model as a static artifact to export a pipeline which allows you to easily evaluate the model on other datasets. Alternatively, setting the testing data as a static artifact would allow you to evaluate different models on the same data. Any static artifacts will require the login credentials for the backend and account where the artifact is stored so it can be retrieved and bundled in the exported zip archive.
+
+Clicking the blue *Run* button in the bottom right will generate the execution files for the pipeline and automatically download them in a zip file. In this zip folder are all the files normally generated for execution. The simplest way to execute this pipeline is to run the top-level *main.py* file. 
 
 .. figure:: images/export-pipeline-dialog.png
     :align: center
