@@ -61,7 +61,7 @@
     },
     "GenericUIWebGMEStart": {
         "pageTitle": "DeepForge",
-        "layout": "SidebarLayout",
+        "layout": "DefaultLayout",
         "byProjectKind": {
             "layout": {
                 "deepforge": "SidebarLayout"
