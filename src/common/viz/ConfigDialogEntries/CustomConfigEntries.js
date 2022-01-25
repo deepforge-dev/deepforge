@@ -183,9 +183,9 @@ define([
                 stringEntry.valueItems = stringEntry.valueItems || [];
             }
 
-            const widget = await this.getEntryForProperty(stringEntry);
+            const entry = await this.getEntryForProperty(stringEntry);
             if (configEntry.valueItemsURL) {
-                const $dropdown = widget.el.find('select');
+                const $dropdown = entry.el.find('select');
                 const updateDropdown = async () => {
                     const valueItems = await this._fetchValueItems(configEntry);
                     $dropdown.empty();
@@ -202,13 +202,14 @@ define([
                             opt.innerText = '';
                             dropdown.appendChild(opt);
                         }
-                        this._addExtraValueItems(widget, configEntry);
+                        this._addExtraValueItems(entry, configEntry);
                     }
+                    entry.widget.setValue(dropdown.value);
                 };
                 $dropdown.on('focus', _.throttle(updateDropdown, 1000));
             }
 
-            return widget;
+            return entry;
         }
 
         async _fetchValueItems(configEntry) {
