@@ -30,7 +30,6 @@ define([
             lineNumbers: this.getLineNumbers
         });
         this.setReadOnly(true);
-        this.ansiParser = AnsiParser();
     };
 
     _.extend(LogViewerWidget.prototype, TextEditorWidget.prototype);
@@ -68,11 +67,15 @@ define([
     LogViewerWidget.prototype.renderAnsi = function () {
         const model = this.editor.getModel();
         const ansiText = model.getLinesContent();
-        model.setValue(this.ansiParser.removeAnsi(model.getValue()));
-        const decorations = this.ansiParser
-            .parse(ansiText)
-            .map(LogViewerWidget.monacoAnsiDecorations);
-        this.editor.deltaDecorations([], decorations.flat());
+        // Strip Ansi, incremental support.
+        model.setValue(AnsiParser.removeAnsi(model.getValue()));
+
+        // Apply deltaDecorations
+        const decorations = AnsiParser.parse(ansiText)
+            .map(LogViewerWidget.monacoAnsiDecorations).flat();
+        if(decorations.length){
+            this.editor.deltaDecorations([], decorations);
+        }
     };
 
     // Get the editor text and update wrt ansi colors

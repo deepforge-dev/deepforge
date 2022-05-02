@@ -241,7 +241,7 @@ function factory() {
 }
 
 if (typeof define !== 'undefined') {
-    define([], () => factory);
+    define([], factory);
 } else {
     module.exports = factory();
 }
