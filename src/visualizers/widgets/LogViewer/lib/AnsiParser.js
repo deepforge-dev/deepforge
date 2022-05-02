@@ -1,5 +1,6 @@
 // Taken as is from node-ansi-parser and added requirejs wrapper
 // https://github.com/IonicaBizau/node-ansi-parser/blob/e514b63908950925bd82f5dbe550e9aa868b0076/lib/index.js
+/* eslint-disable */
 function factory() {
     var AnsiParser = {};
 
