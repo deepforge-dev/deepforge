@@ -3,7 +3,7 @@
 
 define([
     'widgets/TextEditor/TextEditorWidget',
-    './AnsiParser',
+    './lib/AnsiParser',
     'css!./styles/LogViewerWidget.css'
 ], function (
     TextEditorWidget,
@@ -15,7 +15,7 @@ define([
         '\u001b[30m': 'black',
         '\u001b[31m': 'red',
         '\u001b[32m': 'green',
-        '\u001b[93m': 'yellow',
+        '\u001b[33m': 'yellow',
         '\u001b[34m': 'blue',
         '\u001b[35m': 'magenta',
         '\u001b[36m': 'cyan',
@@ -50,7 +50,7 @@ define([
             revealLineno,
             monaco.editor.ScrollType.Smooth
         );
-        this.processANSI();
+        this.renderAnsi();
     };
 
     LogViewerWidget.prototype.getDefaultEditorOptions = function() {
@@ -65,7 +65,7 @@ define([
         return menu;
     };
 
-    LogViewerWidget.prototype.processANSI = function () {
+    LogViewerWidget.prototype.renderAnsi = function () {
         const model = this.editor.getModel();
         const ansiText = model.getLinesContent();
         model.setValue(this.ansiParser.removeAnsi(model.getValue()));
@@ -79,27 +79,23 @@ define([
     LogViewerWidget.monacoAnsiDecorations = function(lineStyles, lineNo) {
         const styles = lineStyles.map(s => s.style);
         let decorations = [];
-        let front=0;
-        let startIdx=0, endIdx=0;
+        let ansiBegin=0, ansiEnd=0;
 
-        while(front < styles.length) {
-            if(ANSI_COLORS[styles[front]]) {
-                startIdx = front;
-                while(styles[front] === styles[front+1]) {
-                    front+=1;
+        while(ansiBegin < styles.length) {
+            if(!ANSI_COLORS[styles[ansiBegin]]) {
+                ansiEnd = ++ansiBegin + 1;
+            } else {
+                while (ansiEnd < styles.length && styles[ansiBegin] === styles[ansiEnd]) {
+                    ansiEnd++;
                 }
-                endIdx = front;
-            }
-            if (endIdx-startIdx) {
                 decorations.push({
-                    range: new monaco.Range(lineNo + 1, startIdx, lineNo + 1, endIdx+1),
+                    range: new monaco.Range(lineNo + 1, ansiBegin, lineNo + 1, ansiEnd+1),
                     options: {
-                        inlineClassName: `ansi-${ANSI_COLORS[styles[startIdx]]}`
+                        inlineClassName: `ansi-${ANSI_COLORS[styles[ansiBegin]]}`
                     }
                 });
-                startIdx = endIdx;
+                ansiBegin = ansiEnd++;
             }
-            front += 1;
         }
         return decorations;
     };
