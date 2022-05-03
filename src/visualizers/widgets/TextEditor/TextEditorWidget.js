@@ -101,7 +101,6 @@ define([
         return monaco.editor.create(
             this.$editor[0], {
                 model: this.model,
-                automaticLayout: true,
                 lightbulb: {
                     enabled: true
                 },
