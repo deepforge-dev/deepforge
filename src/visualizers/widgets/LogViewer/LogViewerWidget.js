@@ -64,6 +64,7 @@ define([
         return menu;
     };
 
+    // Get the editor text and update wrt ansi colors
     LogViewerWidget.prototype.renderAnsi = function () {
         const model = this.editor.getModel();
         const ansiText = model.getLinesContent();
@@ -74,11 +75,10 @@ define([
         const decorations = AnsiParser.parse(ansiText)
             .map(LogViewerWidget.monacoAnsiDecorations).flat();
         if(decorations.length){
-            this.editor.deltaDecorations([], decorations);
+            model.deltaDecorations([], decorations);
         }
     };
 
-    // Get the editor text and update wrt ansi colors
     LogViewerWidget.monacoAnsiDecorations = function(lineStyles, lineNo) {
         const styles = lineStyles.map(s => s.style);
         let decorations = [];
