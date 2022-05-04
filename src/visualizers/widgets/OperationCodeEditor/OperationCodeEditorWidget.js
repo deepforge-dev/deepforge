@@ -28,7 +28,7 @@ define([
     };
 
     OperationCodeEditorWidget.prototype.handleOperationExecute = function () {
-        return this.executeOrStopJob(arguments);
+        return this.executeOrStopJob(...arguments);
     };
 
     _.extend(OperationCodeEditorWidget.prototype, TextEditorWidget.prototype);
