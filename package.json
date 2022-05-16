@@ -46,7 +46,7 @@
     "monaco-editor": "^0.30.0",
     "monaco-vim": "^0.1.19",
     "mongodb": "^2.2.10",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "pacote": "^11.1.10",
     "q": "1.4.1",
     "rimraf": "^2.4.0",
