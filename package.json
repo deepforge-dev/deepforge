@@ -36,7 +36,7 @@
     "deepforge-user-management-page": "github:deepforge-dev/user-management-page",
     "dotenv": "^2.0.0",
     "exists-file": "^2.1.0",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "graceful-fs": "^4.1.10",
     "js-yaml": "^3.13.1",
     "lodash.difference": "^4.1.2",
