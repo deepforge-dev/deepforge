@@ -68,7 +68,7 @@
     "@rollup/plugin-node-resolve": "^8.4.0",
     "chai": "^3.0.0",
     "deepforge-worker": "git+https://github.com/deepforge-dev/worker.git",
-    "jszip": "^2.5.0",
+    "jszip": "^3.8.0",
     "mocha": "^2.2.5",
     "mockery": "^1.7.0",
     "nodemon": "^1.9.2",
