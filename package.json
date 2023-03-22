@@ -69,7 +69,7 @@
     "chai": "^3.0.0",
     "deepforge-worker": "git+https://github.com/deepforge-dev/worker.git",
     "jszip": "^2.5.0",
-    "mocha": "^2.2.5",
+    "mocha": "^10.2.0",
     "mockery": "^1.7.0",
     "nodemon": "^1.9.2",
     "rollup": "^2.3.4",
