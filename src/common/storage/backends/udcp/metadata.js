@@ -7,7 +7,7 @@ define([
     const metadata = {
         name: 'UDCP Blob Storage',
         configStructure: [],
-        url: ""
+        url: ''
     };
 
 
