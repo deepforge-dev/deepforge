@@ -416,6 +416,8 @@ program
             } else {
                 console.log(`${msg} Conda exited with exit code: ${errOrExitCode}`);
             }
+            console.log('Conda environment creation failed. If you want to force the creation of the environment, use:');
+            console.log(`${__dirname}/deepforge create-env -f`);
         }
     });
 
