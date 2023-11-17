@@ -191,11 +191,11 @@ define([
     };
 
     WorkerDialog.prototype.updateJobItem = function(jobId) {
-        var job = this.jobs[jobId] || $(WorkerJobItem),
+        const job = this.jobs[jobId] || $(WorkerJobItem),
             info = this.jobsDict[jobId],
             createdTime = new Date(info.createTime).getTime(),
-            clazz = utils.ClassForJobStatus[info.status.toLowerCase()],
-            status = info.status;
+            clazz = utils.ClassForJobStatus[info.status.toLowerCase()];
+        let status = info.status;
 
         job[0].className = `job-tag ${clazz}`;
 
@@ -207,6 +207,11 @@ define([
         job.find('.status').text(status);
 
         if (!this.jobs[jobId]) {
+            job.find('.cancel').on('click', async event => {
+                event.stopPropagation();
+                event.preventDefault();
+                await ExecutorHelper.cancelJob(jobId);
+            });
             job.find('.job-id').text('Loading');
             job.find('.createdAt').text(utils.getDisplayTime(createdTime));
             this.updateJobItemName(jobId);

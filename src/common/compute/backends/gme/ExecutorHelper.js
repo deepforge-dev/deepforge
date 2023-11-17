@@ -50,5 +50,24 @@ define([
         return this.get(JOBS_ENDPOINT, webgmeToken);
     };
 
+    ExecutorHelper.cancelJob = function(jobId, token) {
+        const endpoint = `/rest/executor/cancel/${jobId}`;
+
+        const deferred = Q.defer();
+        const url = this.url(endpoint);
+        const req = superagent.post(url);
+        if (token) {
+            req.set('Authorization', 'Bearer ' + token);
+        }
+        req.end(err => {
+            if (err) {
+                return deferred.reject(err);
+            }
+            deferred.resolve();
+        });
+
+        return deferred.promise;
+    };
+
     return ExecutorHelper;
 });
